@@ -1,9 +1,10 @@
 const Workout = (name, exercises, onTime, restTime) => {
-    this.name = name;
-    this.exercises = exercises;
-
-    this.onTime = onTime;
-    this.restTime = restTime;
+    return {
+        name: name,
+        exercises: exercises,
+        onTime: onTime,
+        restTime: restTime,
+    }
 }
 
 export default Workout;

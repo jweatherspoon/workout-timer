@@ -9,7 +9,6 @@ import {
 } from '@fortawesome/fontawesome-free-solid';
 
 import FlexContainer from './FlexContainer';
-import { MedText } from './Spans';
 
 const Navbar = styled.nav`
     position: fixed;
@@ -21,18 +20,15 @@ const Navbar = styled.nav`
     user-select: none;
 `;
 
-const NavbarBrand = styled.a`
-    text-decoration: none;
-`;
-
 const NavbarLinks = styled.ul`
     display: inline-flex;
     list-style-type: none;
     width: 100%;
 `;
 
-const NavLink = styled.li`
-
+const NavLink = styled.a`
+    text-decoration: none;
+    color: inherit;
 `;
 
 class Navigation extends Component {
@@ -40,25 +36,36 @@ class Navigation extends Component {
         super(props);
 
         this.state = {
-
+            links: [
+                {
+                    icon: faHome,
+                    href: "/",
+                },
+                {
+                    icon: faCog,
+                    href: "/settings",
+                }
+            ]
         };
     }
 
     render() {
+
+        let links = this.state.links.map(link => {
+            return (
+                <NavLink key={link.href} href={link.href}>
+                    <FontAwesome icon={link.icon} size={'2x'}/>
+                </NavLink>
+            )
+        });
+
         return (
             <Navbar>
                 <FlexContainer justify={'space-around'} align={'center'}>
                     <NavbarLinks>
                         <FlexContainer align={'center'}
                             justify={'space-around'}>
-                            <NavLink>
-                                <FontAwesome icon={faHome}
-                                    size={'2x'} />
-                            </NavLink>
-                            <NavLink>
-                                <FontAwesome icon={faCog}
-                                    size={'2x'} />
-                            </NavLink>
+                            {links}
                         </FlexContainer>
                     </NavbarLinks>
                 </FlexContainer>

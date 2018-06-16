@@ -15,7 +15,7 @@ class HomePage extends Component {
         super(props);
 
         this.state = {
-            backgroundColor: 'white',
+            backgroundColor: 'transparent',
             working: false,
             counter: 45,
         }
